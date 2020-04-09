@@ -1,10 +1,16 @@
 package Practical_7;
 
-import java.util.Arrays;
-
 public class Main {
     public static void main(String[] args) {
         String[] testStrings = readTestFiles();
-        Stiing[] testPatterns = readPatternFiles();
+        String[] testPatterns = readPatternFiles();
+    }
+
+    public static String[] readTestFiles(){
+        return null;
+    }
+
+    public static String[] readPatternFiles(){
+        return null;
     }
 }
