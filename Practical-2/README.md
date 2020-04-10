@@ -1,20 +1,20 @@
 # Practical-2
 ## Directory Structure
   * /main/
-   * In.java
-   * ThreeSumA.java
-   * ThreeSumB.java
+    * In.java
+    * ThreeSumA.java
+    * ThreeSumB.java
   * /assets/
-   * 8ints.txt
-   * 1Kints.txt
-   * 2Kints.txt
-   * 4Kints.txt
-   * 8Kints.txt
-   * 16Kints.txt
-   * 32Kints.txt
+    * 8ints.txt
+    * 1Kints.txt
+    * 2Kints.txt
+    * 4Kints.txt
+    * 8Kints.txt
+    * 16Kints.txt
+    * 32Kints.txt
   * /out/
    * /main/
-    * In.class
-    * ThreeSumA.class
-    * ThreeSumB.class
+     * In.class
+     * ThreeSumA.class
+     * ThreeSumB.class
    * Makefile
