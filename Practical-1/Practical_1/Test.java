@@ -1,4 +1,4 @@
-package main;
+package Practical_1;
 
 import java.io.File;
 import java.io.FileWriter;

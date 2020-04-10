@@ -1,4 +1,4 @@
-package main;
+package Practical_2;
 
 /******************************************************************************
  *  Compilation:  javac ThreeSumA.java

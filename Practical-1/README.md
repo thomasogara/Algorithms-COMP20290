@@ -1,6 +1,6 @@
 # Practical 1
 ## Directory Structure
-  * /main/
+  * /Practical_1/
     * Main.java
     * RussianPeasant.java
     * Test.java
@@ -9,7 +9,7 @@
   * README
 
 
-## /main/
+## /Practical_1/
 This is the main java package used to write solutions for this practical. It contains 3 java files.
 #### RussianPeasant.java
 This is the file containing the implementation of the Russian Peasant's multiplication algorithm.
