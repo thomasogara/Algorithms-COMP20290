@@ -32,7 +32,8 @@ This java file contains the more efficient implementation of the algorithm being
 
 ## /assets/
 This directory contains all test files provided for the practical.
-### /out/
+
+## /out/
 This directory contains the compiled main package, as well as the Makefile used to streamline testing.
 #### /main/
 This directory contains all of the compiled java bytecode for the main package.
