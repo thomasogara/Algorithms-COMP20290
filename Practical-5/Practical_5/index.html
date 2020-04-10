@@ -1,0 +1,66 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<body>
+<div style="display: flex; flex-direction: column">
+<div style="position: relative; height:80vh; width:80vw">
+<canvas id="myChart"></canvas>
+</div>
+<div>
+<button type="button" onclick="myChart.options.scales.yAxes[0].type = (myChart.options.scales.yAxes[0].type === 'logarithmic' ? 'linear' : 'logarithmic'); myChart.update()">alternate axes</button>
+</div>
+</div>
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['1', '10', '100', '1000', '5000', '10000'],
+        datasets: [
+            {
+                label: 'merge',
+                data: [193.18799999999965, 2307.761000000003, 23486.282000000014, 154175.49699999994, 677792.6319999998, 1383174.6000000008],
+                backgroundColor: 'pink',
+                fill: null,
+                borderColor: 'red',
+                borderWidth: 1
+            },
+            {
+                label: 'merge improved',
+                data: [153.65900000000013, 470.1740000000003, 27883.59899999999, 108090.8040000001, 721370.3719999997, 1267868.7980000007],
+                backgroundColor: 'lightblue',
+                fill: null,
+                borderColor: 'blue',
+                borderWidth: 1
+            },
+            {
+                label: 'insertion',
+                data: [228.19799999999998, 830.3409999999989, 15535.973000000004, 168234.33299999998, 3892562.796000002, 15746791.674999991],
+                backgroundColor: 'lightgreen',
+                fill: null,
+                borderColor: 'green',
+                borderWidth: 1
+            }
+
+        ]
+        },
+    options: {
+        scales: {
+            yAxes: [{
+                type: 'logarithmic',
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+</body>
+
+<!--
+'insertion'
+data: [228.19799999999998, 830.3409999999989, 15535.973000000004, 168234.33299999998, 3892562.796000002, 15746791.674999991]
+
+'merge improved'
+data: [153.65900000000013, 470.1740000000003, 27883.59899999999, 108090.8040000001, 721370.3719999997, 1267868.7980000007]
+-->
