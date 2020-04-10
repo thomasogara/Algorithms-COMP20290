@@ -13,8 +13,8 @@
     * 16Kints.txt
     * 32Kints.txt
   * /out/
-   * /main/
-     * In.class
-     * ThreeSumA.class
-     * ThreeSumB.class
+    * /main/
+      * In.class
+      * ThreeSumA.class
+      * ThreeSumB.class
    * Makefile
