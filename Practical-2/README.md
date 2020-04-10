@@ -17,4 +17,6 @@
       * In.class
       * ThreeSumA.class
       * ThreeSumB.class
-   * Makefile
+    * Makefile
+  * ALGO\_P2\_ogara18379576.pdf
+  * README.md
