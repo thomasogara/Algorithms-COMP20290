@@ -8,7 +8,6 @@ public class RussianPeasant{
 		// for so long as b has not been reduced to 0,
 		// add a to the sum, if and only if b is odd
 		while(b > 0){
-			Thread.sleep(1);
 			if((b % 2) == 1){
 				result += a;
 			}
