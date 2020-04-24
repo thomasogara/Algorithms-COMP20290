@@ -9,4 +9,4 @@ There are a number of prerequisutes if you aim to run this project on your local
 
 		Please ensure that the JDK installed on your system is added to the PATH environment variable.
    
-
+$PATH = /usr/lib/jvm/jdk1.8.0_241/bin:$PATH
