@@ -1,16 +1,15 @@
 #!/bin/bash
 
 function compile {
-    mkdir out;
-    javac -d out src/org/algorithms/thomasogara/Main.java src/org/algorithms/thomasogara/*/*.java;
+  mkdir out
+  javac -d out src/org/algorithms/thomasogara/Main.java src/org/algorithms/thomasogara/*/*.java
 }
 
-if [ -d "out" ]
-then
-    bash clean;
-    compile;
+if [ -d "out" ]; then
+  bash clean
+  compile
 else
-    compile;
+  compile
 fi
 
-echo "Installation complete! To run the project, simply type 'bash run' into the terminal";
+echo "Installation complete! To run the project, simply type 'bash run' into the terminal"

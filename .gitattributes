@@ -1,0 +1,3 @@
+clean eol=lf
+install eol=lf
+run eol=lf

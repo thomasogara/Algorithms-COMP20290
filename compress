@@ -1,0 +1,2 @@
+#!/usr/bash
+java -cp out/production/algorithm-portfolio-20290-thomasogara/ org.algorithms.thomasogara.Practical_9.$1 $2 < assets/Practical_9/$3;
