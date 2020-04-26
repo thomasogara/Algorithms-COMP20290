@@ -22,7 +22,5 @@ public class Main {
             System.out.println("Mac  :   Cmd+D");
             System.out.println("Windows: Ctrl+X\n");
         }
-        // I have never in my life felt the need to use a do-while loop
-        // yet here I am, using one
     }
 }

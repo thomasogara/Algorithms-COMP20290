@@ -72,6 +72,7 @@ public class Sort{
 
 	public static void main(String[] args){
 		SortingMethod stalin = Sort::stalinSort;
+		SortingMethod
 		timer(stalin, "stalin sort", 10);
 	}
 }

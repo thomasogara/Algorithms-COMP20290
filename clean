@@ -1,0 +1,9 @@
+#!/bin/bash
+if [ -d "out" ]
+then
+    rm -r out;
+    echo "All output directories successfully cleaned!";
+else
+    echo "No output directories to clean.";
+fi
+

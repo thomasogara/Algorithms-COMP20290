@@ -26,14 +26,14 @@ public class Fibonacci{
 
 	public static void main(String[] args){
         System.out.println("TESTING ITERATIVE");
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 50; i++){
             long start = System.nanoTime();
             int result = fibonacciIterative(i);
             long end = System.nanoTime() - start;
             System.out.println(String.format("%3d\t\t%d", i, end));
 	    }
         System.out.println("TESTING RECURSIVE");
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 50; i++){
             long start = System.nanoTime();
             int result = fibonacciRecursive(i);
             long end = System.nanoTime() - start;
