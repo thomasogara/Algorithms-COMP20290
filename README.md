@@ -1,5 +1,5 @@
 # Thomas O'Gara's Algorithms Portfolio
-Algorithms, eh?
+> Algorithms, eh?
 
 ## Getting Started
 To begin, please `git clone` the repository onto your local machine.
@@ -24,51 +24,29 @@ Now that you have a JDK installed and available via the terminal, as well as the
 ##### Navigation into the root directory
 The first step in the installation process is to navigate to the root directory of the repository. This is the folder into which the repository was cloned. For example, if you cloned the repository into your `Documents` folder, then the root directory should be at `Documents/algorithm-portfolio-20290-thomasogara`
 
-To navigate to the root directory, the `cd` command can be used on all systems. On a *nix system, the process might be something like the example below.
+To navigate to the root directory, the `cd` command can be used on all systems. The process might be something like the example below.
 
-        example@arch:~$ pwd
-        /home/example
-        example@arch:~$ cd Documents
-        example@arch:~/Documents:$ cd algorithm-portfolio-20290-thomasogara
-        example@arch:~/Documents/algorithm-portfolio-20290-thomasogara$ 
-
-On a Windows system, the process might be something similar to the example below.
-
-        C:\Users\example> cd
-        C:\Users\example
-        C:\Users\example> cd Documents
-        C:\Users\example\Documents> cd algorithm-portfolio-20290-thomasogara
-        C:\Users\example\Documents\algorithm-portfolio-20290-thomasogara> 
+    cd Documents/algorithm-portfolio-20290-thomasogara
 
 ##### Building the project from source
-With the terminal session now runnning from within the root directory of the repository, the next step is running the included installation scripts, in order to get the project up and running on your system. To do this, simple run the `bash install` command from the terminal.
+To build the project from source, run the following command from the terminal:
 
-In a *nux terminal:
+    bash install
 
-        example@arch:~/Documents/algorithm-portfolio-20290-thomasogara$ bash install
+The build process is now complete. Each of the Practical sessions has its code stored in a package with the name Practical_\<Week No.\>, within the root org.algorithms.thomasogara package.
 
-In a Windows terminal:
-
-        C:\Users\example\Documents\algorithm-portfolio-20290-thomasogara> bash install
-
-After running this command, the `/out/` directory will be populated with the compiled Java class files from each of the Practical sessions. Each of the Practical sessions has its code. The build process is now complete.
-
-### Executing the Project code
+## Deployment
+To begin, please ensure you have navigated into the root directory of the repository. For more information on this process, see the [navigation into the root directory](#Navigation-into-the-root-directory) section.
+### Running the program locally
 ##### Launching the run script
-Now that you have build the project locally, you can execute the project code. To do this, simply type `bash run` into the terminal.
-
-On a *nix terminal:
-
-        example@arch:~/Documents/algorithm-portfolio-20290-thomasogara$ bash run
-        
-On a Windows terminal:
-
-        C:\Users\example\Documents\algorithm-portfolio-20290-thomasogara> bash run
-        
-This will execute a script which begins executing the project code. If all goes well, you will be greeted by the message "Hello and welcome to my algorithms portfolio!" THis message indicates build and execution success.
+To launch the run script, simply type the following command into the terminal.
+    
+    bash run
+    
+This will execute a script which begins executing the project code. If all goes well, you will be greeted by the message "Hello and welcome to my algorithms portfolio!" This message indicates execution success.
 
 ##### Navigating through the program
-Once the program has begun execution, it will invite you to choose which Practical session you would like to inspect the code for. You can enter any number between 1 and 8 to run the code associated with the relevant Practical session. Once a practical's code has been executed, the program will invite you to continue testing the code of other Practical sessions. Once finished, enter 'N', when prompted by the program, and the program will quit.
+Once the program has begun execution, it will invite you to choose which Practical session you would like to inspect the code for. All of the instructions for using the program are self-contained within the program. Once you have chosen a Practical session to test the code for, depending on the format of the practical, an example usage of the practical code will be output to the screen.
 
 
          
