@@ -47,6 +47,3 @@ This will execute a script which begins executing the project code. If all goes 
 
 #### Navigating through the program
 Once the program has begun execution, it will invite you to choose which Practical session you would like to inspect the code for. All of the instructions for using the program are self-contained within the program. Once you have chosen a Practical session to test the code for, depending on the format of the practical, an example usage of the practical code will be output to the screen.
-
-
-         
