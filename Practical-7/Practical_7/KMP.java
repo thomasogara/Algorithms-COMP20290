@@ -1,30 +1,34 @@
-package Practical_7;
+package org.algorithms.thomasogara.Practical_7;
 
 
 // JAVA program for implementation of KMP pattern
 // searching algorithm
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class KMP {
-    static int[] search(String txt, String pat) {
+    static int[] lps;
+    static String Pattern = "";
+
+    static ArrayList<Integer> search(String txt, String pat) {
         int M = pat.length();
         int N = txt.length();
 
-        // create lps[] that will hold the longest
-        // prefix suffix values for pattern
-        int lps[] = new int[M];
+        // create lps[] that will hold the longest prefix suffix values for pattern
+        if(!pat.equals(Pattern)){
+            lps = new int[M];
+            // Preprocess the pattern (calculate lps[] array)
+            computeLPSArray(pat, M, lps);
+            Pattern = pat;
+        }
 
-        // Preprocess the pattern (calculate lps[]
-        // array)
-        computeLPSArray(pat, M, lps);
+
         ArrayList<Integer> matches = new ArrayList<>();
 
-        for(int i = 0; i <= txt.length() - pat.length();){
+        for(int i = 0; i <= N-M;){
             int j = 0;
-            while(j < pat.length() && txt.charAt(i + j) == pat.charAt(j)) j++;
-            if(j != pat.length()){
+            while(j < M && txt.charAt(i + j) == pat.charAt(j)) j++;
+            if(j != M){
                 i += lps[j] + 1;
             }else {
                 matches.add(i);
@@ -33,11 +37,7 @@ public class KMP {
 
         }
 
-        int[] matchesArr = new int[matches.size()];
-        for(int i = 0; i < matches.size(); i++){
-            matchesArr[i] = matches.get(i);
-        }
-         return matchesArr;
+        return matches;
 
     }
 

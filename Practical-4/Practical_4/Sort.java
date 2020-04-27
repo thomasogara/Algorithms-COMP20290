@@ -1,10 +1,10 @@
-package Practical_4;
+package org.algorithms.thomasogara.Practical_4;
 
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Arrays;
 
 public class Sort{
-	public static void selectionSort(int[] arr){
+	public static int[] selectionSort(int[] arr){
 		int min_index = 0;
 		for(int i = 0; i < arr.length; i++){
 			min_index = i;
@@ -17,10 +17,10 @@ public class Sort{
 			arr[min_index] = arr[i];
 			arr[i] = temp;
 		}
-		System.out.println(Arrays.toString(arr));
+		return arr;
 	}
 
-	public static void insertionSort(int[] arr){
+	public static int[] insertionSort(int[] arr){
 		int key = 0;
 		int j = 0;
 		for(int i = 1; i < arr.length; i++){
@@ -31,11 +31,11 @@ public class Sort{
 				arr[j+1] = key;
 			}
 		}
-		System.out.println(Arrays.toString(arr));
+		return arr;
 	}
 
-	public static void stalinSort(int[] arr){
-		ArrayList<Integer> list = new ArrayList<>();
+	public static int[] stalinSort(int[] arr){
+	    LinkedList<Integer> list = new LinkedList<>();
 		for(Integer a : arr){
 			list.add(a);
 		}
@@ -45,7 +45,11 @@ public class Sort{
 				i--;
 			}
 		}
-		System.out.println(list);
+		int[] a = new int[list.size()];
+		for(int i = 0; i < list.size(); i++){
+			a[i] = list.get(i);
+		}
+		return a;
 	}
 
 	public static int[] randomArray(int size, int min, int max){
@@ -56,23 +60,41 @@ public class Sort{
 		return arr;
 	}
 
-	public static void timeRun(SortingMethod sort, int[] arr, String algorithm){
-		long start = System.nanoTime();
-		sort.sorter(arr);
-		long elapsed = System.nanoTime() - start;
-		System.out.println("Sorted array of size " + arr.length + " in " + elapsed + " nanoseconds using " + algorithm + " algorithm");
+	public static boolean isSorted(int[] a){
+		for (int i = 0; i < a.length - 1; i++){
+			if (a[i] > a[i + 1]) return false;
+		}
+		return true;
 	}
 
-	public static void timer(SortingMethod sort, String algorithm, int times){
+	public static void timeRun(SortingMethod sort, int[] arr, String algorithm){
+		double avg = 0;
+		int[] a = null;
+		for(int i = 0; i < 10; i++) {
+			long start = System.nanoTime();
+			a = sort.sorter(arr);
+			long elapsed = System.nanoTime() - start;
+			if(!isSorted(a)) System.out.println("error sorting with " + algorithm + " algorithm");
+			avg += (double) elapsed / 10;
+		}
+		System.out.println(arr.length + "\t" + avg);
+		// System.out.println(Arrays.toString(a));
+		// System.out.println("Sorted array of size " + arr.length + " in " + avg + " nanoseconds using " + algorithm + " algorithm");
+	}
+
+	public static void timer(SortingMethod sort, String algorithm){
 		System.out.println("Beginning testing of " + algorithm + " algorithm");
-		for(int i = 0; i < times; i++){
-			timeRun(sort, randomArray(1000, 0, 1000), algorithm);
+		for(int i = 1_000; i < 100_000; i += 5_000) {
+			timeRun(sort, randomArray(i, 0, i), algorithm);
 		}
 	}
 
 	public static void main(String[] args){
 		SortingMethod stalin = Sort::stalinSort;
-		SortingMethod
-		timer(stalin, "stalin sort", 10);
+		SortingMethod selection = Sort::selectionSort;
+		SortingMethod insertion = Sort::insertionSort;
+		timer(stalin, "stalin sort");
+		timer(selection, "selection sort");
+		timer(insertion, "insertion sort");
 	}
 }

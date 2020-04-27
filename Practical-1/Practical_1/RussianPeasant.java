@@ -1,4 +1,4 @@
-package Practical_!;
+package org.algorithms.thomasogara.Practical_1;
 
 public class RussianPeasant{
 	public static long russianPeasantAlgorithm(long a, long b) throws Exception {

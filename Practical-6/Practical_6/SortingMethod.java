@@ -1,6 +1,6 @@
-package Practical_6;
+package org.algorithms.thomasogara.Practical_6;
 
 @FunctionalInterface
 public interface SortingMethod{
-	public void sorter(int[] arr);
+	public int[] sorter(int[] arr);
 }

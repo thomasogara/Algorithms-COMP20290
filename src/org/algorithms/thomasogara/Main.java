@@ -12,9 +12,15 @@ public class Main{
 
         while(continuing){
             System.out.println("Which Practical would you like to inspect?");
+            System.out.print("PLease enter a number between 1 and 8 to execute the ");
+            System.out.print("code associated with a given Practical session. Practical 9 was omitted as it involved executing ");
+            System.out.println("provided code via the command line, and emulating this via a driver program is not accomplishable.");
             String line = sc.next();
-            while (!line.matches("\\d{1,2}")) {
-                System.out.println("Unfortunately, that is not a valid line number, please try again");
+            while (!line.matches("[1-8]]")) {
+                System.out.println("Unfortunately, that is not a valid Practical session number, please try again");
+                System.out.print("PLease enter a number between 1 and 8 to execute the ");
+                System.out.print("code associated with a given Practical session. Practical 9 was omitted as it involved executing ");
+                System.out.println("provided code via the command line, and emulating this via a driver program is not accomplishable.");
                 line = sc.next();
             }
             int practicalNumber = Integer.parseInt(line);
@@ -39,18 +45,28 @@ public class Main{
                     break;
                 case 5:
                     org.algorithms.thomasogara.Practical_5.Sort.main(null);
+                    break;
                 case 6:
                     org.algorithms.thomasogara.Practical_6.Sort.main(null);
+                    break;
+                case 7:
+                    org.algorithms.thomasogara.Practical_7.Main.main(null);
+                    break;
+                case 8:
+                    org.algorithms.thomasogara.Practical_8.Trie.main(null);
+                    break;
+                default:
+                    System.out.println("Unfortunately that input is not recognised.\n");
             }
             System.out.println("Would you like to continue testing the Practical demos?");
             System.out.println("If yes, enter 'Y'. Else, enter 'N'");
-            while(!sc.hasNext("Y|N")){
-                System.out.println("Sorry, that input wasn't recognised.");
+            while(!sc.hasNext("[ynYN]")){
+                System.out.println("Sorry, that input wasn't recognised.\n");
                 System.out.println("Would you like to continue testing the Practical demos?");
                 System.out.println("If yes, enter 'Y'. Else, enter 'N'");
                 sc.next(); // consume the non-matching input
             }
-            if(sc.next().equals("N")) continuing = false;
+            if(sc.next().matches("[nN]]")) continuing = false;
         };
     }
 }

@@ -1,4 +1,4 @@
-package Practical_2;
+package org.algorithms.thomasogara.Practical_2;
 
 /******************************************************************************
  *  Compilation:  javac ThreeSumA.java

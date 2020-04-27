@@ -1,4 +1,4 @@
-package Practical_7;
+package org.algorithms.thomasogara.Practical_7;
 // Java program for Naive Pattern Searching 
 
 import java.util.ArrayList;

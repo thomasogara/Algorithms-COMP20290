@@ -1,3 +1,7 @@
+package org.algorithms.thomasogara.Practical_3;
+
+import java.util.Scanner;
+
 public class Main{
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
@@ -5,7 +9,7 @@ public class Main{
         System.out.println("Would you like to test:");
         System.out.println("\ta: Fibonacci (iterative vs recursive)");
         System.out.println("\tb: Towers of Hanoi");
-        System.out.println("Please input a, or b below:")
+        System.out.println("Please input a, or b below:");
         while(!sc.hasNext("a|b")){
             System.out.println("Sorry, that input wasn't recognised.");
             System.out.println("Would you like to test:");
@@ -25,7 +29,7 @@ public class Main{
                     System.out.println("How many disks would you like to test for?");
                     sc.next();
                 }
-                Hanoi.main(new String[] {sc.next(), "source", "auxilliary", "destination"})
+                Hanoi.main(new String[] {sc.next(), "source", "auxilliary", "destination"});
         }
     }
 }

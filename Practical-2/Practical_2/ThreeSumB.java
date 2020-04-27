@@ -1,4 +1,4 @@
-package Practical_2;
+package org.algorithms.thomasogara.Practical_2;
 
 /******************************************************************************
  *  Compilation:  javac ThreeSumB.java
@@ -17,6 +17,7 @@ package Practical_2;
  *
  ******************************************************************************/
 
+import java.io.File;
 import java.util.Arrays;
 import java.lang.*;
 
@@ -63,7 +64,7 @@ public class ThreeSumB {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args)  { 
+    public static void main(String[] args)  {
         In in = new In(args[0]);
         int[] a = in.readAllInts();
         long start = System.nanoTime();

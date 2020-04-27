@@ -1,4 +1,4 @@
-package Practical_6;
+package org.algorithms.thomasogara.Practical_6;
 
 import java.util.Arrays;
 import java.util.ArrayList;
@@ -7,52 +7,91 @@ import java.lang.Math;
 public class Sort{
     public static int CUTOFF = 10;
 
-    public static void quickSort(int[] a){
-        quickSort(a, 0, a.length - 1);
+    public static int[] quickSortImproved(int[] a){
+        return quickSortImproved(a, 0, a.length - 1);
     }
 
-    public static int[] quickSort(int[] a, int lo, int hi){
-        if(hi - lo <= 1){
+    public static int[] quickSortImproved(int[] a, int lo, int hi){
+//        System.out.println("hi: " + hi + ", lo: " + lo);
+        if(hi <= lo){
             return a;
         }
         
-        
-        int pivot = partition(a, lo, hi);
-        
-        if(hi - lo <= 3){
-            return a;
+        /*
+        if(hi-lo <= CUTOFF){
+            return insertionSort(a);
         }
+        */
+        
+        int pivot = partitionImproved(a, lo, hi);
 
-        quickSort(a, lo, pivot - 1);
-        quickSort(a, pivot + 1, hi);
+        quickSortImproved(a, lo, pivot - 1);
+        quickSortImproved(a, pivot + 1, hi);
         return a;
     }
 
-    public static int partition(int[] a, int lo, int hi){
-        int pivot = median(a[lo], a[hi], a[(hi - lo) / 2]);
-        int temp = 0;
-        int left = lo;
-        for(int i = lo; i <= hi; i++){
+    public static void swap(int[] a, int i, int j){
+        int temp = a[i];
+        a[i] = a[j];
+        a[j] = temp;
+    }
+
+    public static int partitionImproved(int[] a, int lo, int hi){
+        int middle = (hi + lo) / 2;
+        if(a[lo] > a[middle]){
+            swap(a, lo, middle);
+        }
+        if(a[lo] > a[hi]){
+            swap(a, lo, hi);
+        }
+        if(a[middle] > a[hi]){
+            swap(a, hi, middle);
+        }
+        int pivot = a[middle];
+        swap(a, hi, middle);
+
+        int left = lo - 1;
+        for(int i = lo; i < hi; i++){
             if(a[i] < pivot){
+                left++;
+                swap(a, i, left);
+            }
+        }
+        swap(a, hi, left + 1);
+        return left + 1;
+    }
+
+    public static int[] quickSortDefault(int[] a){
+        return quickSortDefault(a, 0, a.length - 1);
+    }
+
+    public static int[] quickSortDefault(int[] a, int lo, int hi){
+        if(lo < hi){
+            int pivot = partitionDefault(a, lo, hi);
+
+            quickSortDefault(a, lo, pivot - 1);
+            quickSortDefault(a, pivot + 1, hi);
+            return a;
+        }
+        return a;        
+    }
+
+    public static int partitionDefault(int[] a, int lo, int hi){
+        int pivot = a[hi];
+        int temp = 0;
+        int left = lo - 1;
+        for(int i = lo; i < hi; i++){
+            if(a[i] < pivot){
+                left++;
                 temp = a[left];
                 a[left] = a[i];
                 a[i] = temp;
-                left++;
             }
         }
         temp = a[hi];
-        a[hi] = a[left];
-        a[left] = temp;
-        return left;
-    }
-
-    public static int median(int a, int b, int c){
-        int[] arr = new int[3];
-        arr[0] = a;
-        arr[1] = b;
-        arr[2] = c;
-        arr = selectionSort(arr);
-        return arr[1];
+        a[hi] = a[left + 1];
+        a[left + 1] = temp;
+        return left + 1;
     }
 
 
@@ -113,11 +152,11 @@ public class Sort{
         int[] right = new int[a.length / 2];
         int i = 0;
 
-        for(; i < a.length / 2 + ((a.length % 2) == 0 ? 0 : 1); i++){
+        for(; i < a.length / 2 + (a.length % 2); i++){
             left[i] = a[i];
         }
         for(; i< a.length; i++){
-            right[i - ((a.length / 2) + ((a.length % 2) == 0 ? 0 : 1))] = a[i];
+            right[i - ((a.length / 2) + (a.length % 2))] = a[i];
         }
 
         left = mergeSort(left);
@@ -192,37 +231,53 @@ public class Sort{
     public static int[] randomArray(int size, int min, int max){
 		int[] arr = new int[size];
 		for(int i = 0; i < size; i++){
-			arr[i] = min + ((int)Math.floor(Math.random() * (max + 1)));
+			arr[i] = size - i;
 		}
 		return arr;
 	}
 
-    public static long timeRun(SortingMethod sort, int[] arr, String algorithm){
-        System.out.println(Arrays.toString(arr));
-		long start = System.nanoTime();
-		sort.sorter(arr);
-		long elapsed = System.nanoTime() - start;
-        System.out.println(Arrays.toString(arr));
-        return elapsed;
+
+    public static boolean isSorted(int[] a){
+		for (int i = 0; i < a.length - 1; i++){
+			if (a[i] > a[i + 1]) return false;
+		}
+		return true;
 	}
 
-	public static void timer(SortingMethod sort, String algorithm, int times, int size){
-        long results[] = new long[times];
-		for(int i = 0; i < times; i++){
-			results[i] = timeRun(sort, randomArray(size, 0, size), algorithm);
+    public static void timeRun(SortingMethod sort, String algorithm, int size){
+		double avg = 0;
+		int[] a = null;
+		for(int i = 0; i < 10; i++) {
+            int[] arr = randomArray(size, -size, size);
+            KnuthShuffle.shuffle(arr);
+			long start = System.nanoTime();
+            try{
+			    a = sort.sorter(arr);
+            } catch(StackOverflowError e){
+                System.out.println("algorithm " + algorithm + " encountered stackoverflow error");
+            }
+			long elapsed = System.nanoTime() - start;
+			if(!isSorted(a)) System.out.println("error sorting with " + algorithm + " algorithm");
+			avg += (double) elapsed / 10;
 		}
-        double average = 0;
-        for(int i = 0; i < times; i++){
-            average += (double) results[i] / times;
+		System.out.println(size + "\t" + avg);
+		// System.out.println(Arrays.toString(a));
+		// System.out.println("Sorted array of size " + arr.length + " in " + avg + " nanoseconds using " + algorithm + " algorithm");
+	}
+
+	public static void timer(SortingMethod sort, String algorithm){
+		System.out.println("Beginning testing of " + algorithm + " algorithm");
+        for(int i = 10_000; i <= 1_000_000; i += 10_000){
+            timeRun(sort, algorithm, i);
         }
-   		System.out.println(String.format("%s %d %d %f",algorithm, size, times, average));
 	}
     
     public static void main(String[] args){
-           SortingMethod insertion = Sort::insertionSort;
            SortingMethod mergeDefault = Sort::mergeSort;
-           SortingMethod mergeImproved = Sort::mergeSortImproved;
-           SortingMethod quickSortDefault = Sort::quickSort;
-           timer(quickSortDefault, "quicksort", 1, new Integer(args[0]));
+           SortingMethod quickSortDefault = Sort::quickSortDefault;
+           SortingMethod quickSortImproved = Sort::quickSortImproved;
+           timer(mergeDefault, "mergesort");
+           timer(quickSortDefault, "default quicksort");
+           timer(quickSortImproved, "enhanced quicksort");
     }
 }

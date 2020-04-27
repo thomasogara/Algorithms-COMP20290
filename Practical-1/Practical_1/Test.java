@@ -1,4 +1,4 @@
-package Practical_1;
+package org.algorithms.thomasogara.Practical_1;
 
 import java.io.File;
 import java.io.FileWriter;

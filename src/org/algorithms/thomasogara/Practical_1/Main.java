@@ -19,13 +19,13 @@ public class Main {
             System.out.println(String.format("\n%d * %d  = %d\n", a, b, RussianPeasant.russianPeasantAlgorithm(a, b)));
             System.out.println("Would you like to continue running the Practical 1 demo program?");
             System.out.println("If yes, enter 'Y'. Else, enter 'N'");
-            while(!sc.hasNext("Y|N")){
+            while(!sc.hasNext("[nNyY]")){
                 System.out.println("Sorry, that input wasn't recognised");
                 System.out.println("Would you like to continue running the Practical 1 demo program?");
                 System.out.println("If yes, enter 'Y'. Else, enter 'N'");
                 sc.next(); // consume whatever didnt match the pattern
             }
-            if(sc.next().equals("N")) return;
+            if(sc.next().matches("[Nn]")) return;
         }
     }
 }

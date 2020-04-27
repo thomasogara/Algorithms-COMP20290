@@ -1,3 +1,5 @@
+package org.algorithms.thomasogara.Practical_3;
+
 public class Hanoi{
     public static void Hanoi(int disk, String source, String dest, String aux){
         if (disk == 0){

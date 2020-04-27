@@ -21,12 +21,12 @@ public class Main {
         for(String arg : args){
             System.out.println("Would you like to run ThreeSumA and ThreeSumB for the input file " + arg + "?");
             System.out.println("If yes, enter 'Y'. Else, enter 'N'");
-            while(!sc.hasNext("[nNYy]")){
+            while(!sc.hasNext("Y|N")){
                 System.out.println("Sorry, that wasn't recognised");
                 System.out.println("Would you like to run ThreeSumA and ThreeSumB for the input file " + arg + "?");
                 System.out.println("If yes, enter 'Y'. Else, enter 'N'");
             }
-            if(sc.next().matches("[nN]")) continue;
+            if(sc.next().equals("N")) continue;
             run(arg);
         }
     }

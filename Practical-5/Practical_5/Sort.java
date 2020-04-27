@@ -1,12 +1,12 @@
-package Practical_5;
+package org.algorithms.thomasogara.Practical_5;
 
 import java.util.Arrays;
 import java.util.ArrayList;
 import java.lang.Math;
 
 public class Sort{
-    public static int CUTOFF = 64;
-	public static void selectionSort(int[] arr){
+    public static int CUTOFF = 100;
+	public static int[] selectionSort(int[] arr){
 		int min_index = 0;
 		for(int i = 0; i < arr.length; i++){
 			min_index = i;
@@ -19,7 +19,7 @@ public class Sort{
 			arr[min_index] = arr[i];
 			arr[i] = temp;
 		}
-		System.out.println(Arrays.toString(arr));
+		return arr;
 	}
 
 	public static int[] insertionSort(int[] arr){
@@ -87,15 +87,15 @@ public class Sort{
             return insertionSort(a);
         }
         
-        int[] left = new int[a.length / 2 + ((a.length % 2) == 0 ? 0 : 1)];
+        int[] left = new int[a.length / 2 + (a.length % 2)];
         int[] right = new int[a.length / 2];
         int i = 0;
 
-        for(; i < a.length / 2 + ((a.length % 2) == 0 ? 0 : 1); i++){
+        for(; i < a.length / 2 + (a.length % 2); i++){
             left[i] = a[i];
         }
         for(; i< a.length; i++){
-            right[i - ((a.length / 2) + ((a.length % 2) == 0 ? 0 : 1))] = a[i];
+            right[i - ((a.length / 2) + (a.length % 2))] = a[i];
         }        
 
         left = mergeSort(left);
@@ -147,32 +147,41 @@ public class Sort{
 		return arr;
 	}
 
-    public static long timeRun(SortingMethod sort, int[] arr, String algorithm){
-		long start = System.nanoTime();
-		sort.sorter(arr);
-		long elapsed = System.nanoTime() - start;
-        return elapsed;
+    public static boolean isSorted(int[] a){
+		for (int i = 0; i < a.length - 1; i++){
+			if (a[i] > a[i + 1]) return false;
+		}
+		return true;
 	}
 
-	public static void timer(SortingMethod sort, String algorithm, int times, int size){
-		System.out.println("Beginning testing of " + algorithm + " algorithm");
-        long results[] = new long[times];
-		for(int i = 0; i < times; i++){
-			results[i] = timeRun(sort, randomArray(size, 0, size), algorithm);
+    public static void timeRun(SortingMethod sort, int[] arr, String algorithm){
+		double avg = 0;
+		int[] a = null;
+		for(int i = 0; i < 10; i++) {
+			long start = System.nanoTime();
+			a = sort.sorter(arr);
+			long elapsed = System.nanoTime() - start;
+			if(!isSorted(a)) System.out.println("error sorting with " + algorithm + " algorithm");
+			avg += (double) elapsed / 10;
 		}
-        double average = 0;
-        for(int i = 0; i < times; i++){
-            average += (double) results[i] / times;
+		System.out.println(arr.length + "\t" + avg);
+		// System.out.println(Arrays.toString(a));
+		// System.out.println("Sorted array of size " + arr.length + " in " + avg + " nanoseconds using " + algorithm + " algorithm");
+	}
+
+	public static void timer(SortingMethod sort, String algorithm){
+		System.out.println("Beginning testing of " + algorithm + " algorithm");
+        for(int i = 1_000; i < 100_000; i += 1_000){
+            timeRun(sort, randomArray(i, 0, i), algorithm);
         }
-   		System.out.println("Sorted array of size " + size + " in " + average + " nanoseconds on average over " + times + " trials using " + algorithm + " algorithm");
 	}
     
     public static void main(String[] args){
            SortingMethod insertion = Sort::insertionSort;
            SortingMethod mergeDefault = Sort::mergeSort;
            SortingMethod mergeImproved = Sort::mergeSortImproved;
-           timer(insertion, "insertion sort", 1000, new Integer(args[0]));
-           timer(mergeDefault, "default merge sort", 1000, new Integer(args[0]));
-           timer(mergeImproved, "improved merge sort", 1000, new Integer(args[0]));
+           timer(insertion, "insertion sort");
+           timer(mergeDefault, "default merge sort");
+           timer(mergeImproved, "improved merge sort");
     }
 }
