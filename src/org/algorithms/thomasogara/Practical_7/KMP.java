@@ -6,6 +6,10 @@ package org.algorithms.thomasogara.Practical_7;
 
 import java.util.ArrayList;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
 public class KMP {
     static int[] lps;
     static String Pattern = "";

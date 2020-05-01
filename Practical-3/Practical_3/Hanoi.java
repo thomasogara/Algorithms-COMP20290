@@ -1,5 +1,9 @@
 package org.algorithms.thomasogara.Practical_3;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
 public class Hanoi{
     public static void Hanoi(int disk, String source, String dest, String aux){
         if (disk == 0){

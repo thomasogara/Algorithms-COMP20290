@@ -2,7 +2,10 @@ package org.algorithms.thomasogara.Practical_7;
 // Java program for Naive Pattern Searching 
 
 import java.util.ArrayList;
-import java.util.Arrays;
+
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
 
 public class BruteForce {
 

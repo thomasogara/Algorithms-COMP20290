@@ -2,6 +2,10 @@ package org.algorithms.thomasogara.Practical_2;
 
 import java.util.Scanner;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
 public class Main {
     public static void run(String filename) {
         String[] args = {filename};

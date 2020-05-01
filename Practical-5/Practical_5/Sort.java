@@ -1,8 +1,11 @@
 package org.algorithms.thomasogara.Practical_5;
 
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.lang.Math;
+
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
 
 public class Sort{
     public static int CUTOFF = 100;
@@ -41,14 +44,16 @@ public class Sort{
 		for(Integer a : arr){
 			list.add(a);
 		}
+		int sortedSubArrayLength = 0;
 		for(int i = 1; i < list.size(); i++){
 			if(list.get(i) < list.get(i-1)){
-				list.remove(i);
+				list.set(i, list.get(list.size() - 1));
+				++sortedSubArrayLength;
 				i--;
 			}
 		}
         int[] a = new int[list.size()];
-        for(int i = 0; i < list.size(); i++){
+        for(int i = 0; i < sortedSubArrayLength; i++){
             a[i] = list.get(i);
         }
         return a;

@@ -1,7 +1,8 @@
 package org.algorithms.thomasogara.Practical_3;
 
-import java.util.ArrayList;
-import java.lang.Math;
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
 
 public class Fibonacci{
     public static int fibonacciIterative(int n){

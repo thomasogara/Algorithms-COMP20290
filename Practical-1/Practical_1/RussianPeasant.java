@@ -1,5 +1,12 @@
 package org.algorithms.thomasogara.Practical_1;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
+/**
+ * My implementation of the Russian Peasant's algorithm
+ */
 public class RussianPeasant{
 	public static long russianPeasantAlgorithm(long a, long b) throws Exception {
 		// long variable to store result of multiplication

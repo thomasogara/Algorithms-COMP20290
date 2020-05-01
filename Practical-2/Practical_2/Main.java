@@ -2,6 +2,10 @@ package org.algorithms.thomasogara.Practical_2;
 
 import java.util.Scanner;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
 public class Main {
     public static void run(String filename) {
         String[] args = {filename};
@@ -21,12 +25,12 @@ public class Main {
         for(String arg : args){
             System.out.println("Would you like to run ThreeSumA and ThreeSumB for the input file " + arg + "?");
             System.out.println("If yes, enter 'Y'. Else, enter 'N'");
-            while(!sc.hasNext("Y|N")){
+            while(!sc.hasNext("[nNYy]")){
                 System.out.println("Sorry, that wasn't recognised");
                 System.out.println("Would you like to run ThreeSumA and ThreeSumB for the input file " + arg + "?");
                 System.out.println("If yes, enter 'Y'. Else, enter 'N'");
             }
-            if(sc.next().equals("N")) continue;
+            if(sc.next().matches("[nN]")) continue;
             run(arg);
         }
     }

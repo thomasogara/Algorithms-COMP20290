@@ -1,8 +1,15 @@
 package org.algorithms.thomasogara.Practical_4;
 
 import java.util.LinkedList;
-import java.util.Arrays;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
+
+/**
+ * The main class implementing the sorting techniques assigned
+ */
 public class Sort{
 	public static int[] selectionSort(int[] arr){
 		int min_index = 0;

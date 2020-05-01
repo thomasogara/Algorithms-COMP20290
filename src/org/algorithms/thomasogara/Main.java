@@ -1,7 +1,10 @@
 package org.algorithms.thomasogara;
 
-import java.lang.reflect.Array;
 import java.util.Scanner;
+
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
 
 public class Main{
     public static void main(String[] args) throws Exception {
@@ -20,7 +23,7 @@ public class Main{
                 System.out.println("Unfortunately, that is not a valid Practical session number, please try again");
                 System.out.print("PLease enter a number between 1 and 8 to execute the ");
                 System.out.print("code associated with a given Practical session. Practical 9 was omitted as it involved executing ");
-                System.out.println("provided code via the command line, and emulating this via a driver program is not accomplishable.");
+                System.out.println("provided code via the command line, and emulating this via a driver program isn't really sensible.");
                 line = sc.next();
             }
             int practicalNumber = Integer.parseInt(line);

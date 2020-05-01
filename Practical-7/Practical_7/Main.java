@@ -3,6 +3,10 @@ package org.algorithms.thomasogara.Practical_7;
 import java.io.*;
 import java.util.LinkedList;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
 public class Main {
     public static void main(String[] args) {
         try {

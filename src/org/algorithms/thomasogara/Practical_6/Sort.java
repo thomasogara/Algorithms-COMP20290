@@ -1,8 +1,10 @@
 package org.algorithms.thomasogara.Practical_6;
 
-import java.util.Arrays;
 import java.util.ArrayList;
-import java.lang.Math;
+
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
 
 public class Sort{
     public static int CUTOFF = 10;

@@ -1,7 +1,10 @@
 package org.algorithms.thomasogara.Practical_8;
 
 import java.util.Arrays;
-import java.util.function.Function;
+
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
 
 public class Trie {
     // Alphabet size (# of symbols) we pick 26 for English alphabet

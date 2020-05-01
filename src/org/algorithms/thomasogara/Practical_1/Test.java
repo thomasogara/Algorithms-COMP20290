@@ -4,6 +4,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.math.BigInteger;
 
+/**
+ * @author: Thomas O'Gara, 18379576, thomas.ogara@ucdconnect.ie
+ */
+
 public class Test {
     static FileWriter fw;
 
