@@ -10,14 +10,15 @@ package org.algorithms.thomasogara.compression_assignment;
  ******************************************************************************/
 
 
-import sun.nio.cs.US_ASCII;
+import sun.nio.cs.ext.ExtendedCharsets;
 
 import java.io.*;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.NoSuchElementException;
+import java.util.Arrays;
 
 /**
  *  @author Thomas O'Gara
@@ -34,11 +35,11 @@ public class Huffman {
 
     // CompressionAssignment.Huffman trie node
     private static class Node implements Comparable<Node> {
-        private final byte b;
+        private final Byte b;
         private final int freq;
         private final Node left, right;
 
-        Node(byte b, int freq, Node left, Node right) {
+        Node(Byte b, int freq, Node left, Node right) {
             this.b    = b;
             this.freq  = freq;
             this.left  = left;
@@ -85,18 +86,27 @@ public class Huffman {
         String[] lookupTable = new String[R];
         buildCode(lookupTable, root, "");
 
+        int sum = 0;
+        for(int i : frequencies){
+            sum += i;
+        }
+        System.err.println(sum);
         // write the trie to stdout for the decoder
-        writeTrie(root);
+        //writeTrie(root);
 
-        for(byte b : input.getBytes()){
-            int i = Byte.toUnsignedInt(b);
-            for(char x : lookupTable[i].toCharArray()){
-                BinaryStdOut.write(x == '1');
+        System.err.println(input.getBytes(StandardCharsets.US_ASCII).length);
+        System.err.println(Arrays.toString(input.getBytes(StandardCharsets.US_ASCII)));
+        for(byte b : input.getBytes(StandardCharsets.US_ASCII)){
+            System.err.println(b);
+            BinaryStdOut.write((byte) (b));
+            /*
+            for(char c : lookupTable[i].toCharArray()){
+                BinaryStdOut.write(c == '1');
             }
+             */
         }
 
     }
-
 
     /**
      * Reads a sequence of bits that represents a CompressionAssignment.Huffman-compressed message from
@@ -109,36 +119,33 @@ public class Huffman {
 
        ArrayList<Byte> bytes = new ArrayList<>();
         while (!BinaryStdIn.isEmpty()){
-            decode(trie, bytes);
+            decode(trie, bytes, trie);
         }
-        bytes.remove(bytes.size() - 1);
         byte[] byteArray = new byte[bytes.size()];
         for(int i = 0; i < byteArray.length; i++){
             byteArray[i] = bytes.get(i);
         }
         for(byte b : byteArray){
-            BinaryStdOut.write(b);
+            BinaryStdOut.write((byte)(b & 0xFF));
         }
-
     }
 
-    public static void decode(Node x, ArrayList<Byte> bytes){
-        if(BinaryStdIn.isEmpty()) return;
+    public static void decode(Node x, ArrayList<Byte> bytes, Node root){
         if(!x.isLeaf()){
             if(!BinaryStdIn.readBoolean()){
-                decode(x.left, bytes);
+                decode(x.left, bytes, root);
             }else{
-                decode(x.right, bytes);
+                decode(x.right, bytes, root);
             }
         }
-        if(x.b != (byte) 0) bytes.add(x.b);
+        else if(x.b != null && x != root) bytes.add(x.b);
     }
 
     private static int[] getFrequencies(String input){
         int[] frequencies = new int[R];
-        for(Byte b : input.getBytes()){
+        for(Byte b : input.getBytes(StandardCharsets.US_ASCII)){
             // map all bytes to range 0 - 255
-            int i = Byte.toUnsignedInt(b);
+            int i = b;
             frequencies[i] += 1;
         }
         return frequencies;
@@ -151,19 +158,19 @@ public class Huffman {
         MinPQ<Node> pq = new MinPQ<>();
         for (int i = 0; i < R; i++)
             if (freq[i] > 0)
-                pq.insert(new Node((byte)i, freq[i], null, null));
+                pq.insert(new Node((byte) i, freq[i], null, null));
 
         // special case in case there is only one character with a nonzero frequency
         if (pq.size() == 1) {
-            if (freq['\0'] == 0) pq.insert(new Node((byte) 0, 0, null, null));
-            else                 pq.insert(new Node((byte) 1, 0, null, null));
+            if (freq['\0'] == 0) pq.insert(new Node(null, 0, null, null));
+            else                 pq.insert(new Node((byte) '\1', 0, null, null));
         }
 
         // merge two smallest trees
         while (pq.size() > 1) {
             Node left  = pq.delMin();
             Node right = pq.delMin();
-            Node parent = new Node((byte) 0, left.freq + right.freq, left, right);
+            Node parent = new Node(null, left.freq + right.freq, left, right);
             pq.insert(parent);
         }
         return pq.delMin();
@@ -189,7 +196,7 @@ public class Huffman {
             buildCode(st, x.right, s + '1');
         }
         else {
-            st[Byte.toUnsignedInt(x.b)] = s;
+            st[x.b] = s;
         }
     }
 
@@ -201,7 +208,7 @@ public class Huffman {
             return new Node(BinaryStdIn.readByte(), -1, null, null);
         }
         else {
-            return new Node((byte) 0, -1, readTrie(), readTrie());
+            return new Node(null, -1, readTrie(), readTrie());
         }
     }
 

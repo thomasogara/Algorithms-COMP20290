@@ -130,7 +130,7 @@ public final class BinaryStdIn {
         if (isEmpty()) throw new NoSuchElementException("Reading from empty input stream");
         n = oldN;
         x |= (buffer >>> n);
-        return (char) (x & 0xff);
+        return (char) (x);
         // the above code doesn't quite work for the last character if n = 8
         // because buffer will be -1, so there is a special case for aligned byte
     }
@@ -278,7 +278,7 @@ public final class BinaryStdIn {
      */
     public static byte readByte() {
         char c = readChar();
-        return (byte) (c & 0xff);
+        return (byte) (c);
     }
     
    /**
