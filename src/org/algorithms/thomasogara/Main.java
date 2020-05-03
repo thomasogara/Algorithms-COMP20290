@@ -17,7 +17,7 @@ public class Main{
             System.out.println("Which Practical would you like to inspect?");
             System.out.print("PLease enter a number between 1 and 8 to execute the ");
             System.out.print("code associated with a given Practical session. Practical 9 was omitted as it involved executing ");
-            System.out.println("provided code via the command line, and emulating this via a driver program is not accomplishable.");
+            System.out.print("provided code via the command line, and emulating this via a driver program is not accomplishable.");
             String line = sc.next();
             while (!line.matches("[1-8]]")) {
                 System.out.println("Unfortunately, that is not a valid Practical session number, please try again");
