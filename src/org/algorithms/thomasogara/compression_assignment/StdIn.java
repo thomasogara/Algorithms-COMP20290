@@ -1,4 +1,4 @@
-package org.algorithms.thomasogara.compression_assignment.compression_assignment;
+package org.algorithms.thomasogara.compression_assignment;
 /******************************************************************************
  *  Compilation:  javac StdIn.java
  *  Execution:    java StdIn   (interactive test of basic functionality)

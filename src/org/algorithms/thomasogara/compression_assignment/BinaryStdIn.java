@@ -1,4 +1,4 @@
-package org.algorithms.thomasogara.compression_assignment.compression_assignment;
+package org.algorithms.thomasogara.compression_assignment;
 /******************************************************************************
  *  Compilation:  javac BinaryStdIn.java
  *  Execution:    java BinaryStdIn < input > output

@@ -1,4 +1,4 @@
-package org.algorithms.thomasogara.compression_assignment.compression_assignment;
+package org.algorithms.thomasogara.compression_assignment;
 /******************************************************************************
  *  Compilation:  javac RunLength.java
  *  Execution:    java RunLength - < input.txt   (compress)

@@ -1,71 +1,64 @@
-package org.algorithms.thomasogara.compression_assignment.compression_assignment;
+package org.algorithms.thomasogara.compression_assignment;
 /******************************************************************************
- *  Compilation:  javac HexDump.java
- *  Execution:    java HexDump < file
- *  Dependencies: BinaryStdIn.java StdOut.java
+ *  Compilation:  javac BinaryDump.java
+ *  Execution:    java BinaryDump n < file
+ *  Dependencies: BinaryStdIn.java*
+ *  Reads in a binary file and writes out the bits, n per line.
  *
- *  Reads in a binary file and writes out the bytes in hex, 16 per line.
- *
- *  % more abra.txt
+ *  % more abra.txt 
  *  ABRACADABRA!
  *
- *  % java HexDump 16 < abra.txt
- *  41 42 52 41 43 41 44 41 42 52 41 21
+ *  % java BinaryDump 16 < abra.txt
+ *  0100000101000010
+ *  0101001001000001
+ *  0100001101000001
+ *  0100010001000001
+ *  0100001001010010
+ *  0100000100100001
  *  96 bits
- *
- *
- *  Remark
- *  --------------------------
- *   - Similar to the Unix utilities od (octal dump) or hexdump (hexadecimal dump).
- *
- *  % od -t x1 < abra.txt 
- *  0000000 41 42 52 41 43 41 44 41 42 52 41 21
- *  0000014
  *
  ******************************************************************************/
 
 
 /**
- *  The {@code HexDump} class provides a client for displaying the contents
- *  of a binary file in hexadecimal.
+ *  The {@code BinaryDump} class provides a client for displaying the contents
+ *  of a binary file in binary.
  *
  *  @author Robert Sedgewick
  *  @author Kevin Wayne
  */
-public class HexDump {
+public class BinaryDump {
 
     // Do not instantiate.
-    private HexDump() { }
+    private BinaryDump() { }
 
     /**
      * Reads in a sequence of bytes from standard input and writes
-     * them to standard output using hexademical notation, k hex digits
-     * per line, where k is given as a command-line integer (defaults
+     * them to standard output in binary, k bits per line,
+     * where k is given as a command-line integer (defaults
      * to 16 if no integer is specified); also writes the number
      * of bits.
      *
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
-        int bytesPerLine = 16;
+        int bitsPerLine = 16;
         if (args.length == 1) {
-            bytesPerLine = Integer.parseInt(args[0]);
+            bitsPerLine = Integer.parseInt(args[0]);
         }
 
-        int i;
-        for (i = 0; !BinaryStdIn.isEmpty(); i++) {
-            if (bytesPerLine == 0) {
-                BinaryStdIn.readChar();
+        int count;
+        for (count = 0; !BinaryStdIn.isEmpty(); count++) {
+            if (bitsPerLine == 0) {
+                BinaryStdIn.readBoolean();
                 continue;
             }
-            if (i == 0) StdOut.printf("");
-            else if (i % bytesPerLine == 0) StdOut.printf("\n", i);
-            else StdOut.print(" ");
-            char c = BinaryStdIn.readChar();
-            StdOut.printf("%02x", c & 0xff);
+            else if (count != 0 && count % bitsPerLine == 0) StdOut.println();
+            if (BinaryStdIn.readBoolean()) StdOut.print(1);
+            else                           StdOut.print(0);
         }
-        if (bytesPerLine != 0) StdOut.println();
-        StdOut.println((i*8) + " bits");
+        if (bitsPerLine != 0) StdOut.println();
+        StdOut.println(count + " bits");
     }
 }
 
