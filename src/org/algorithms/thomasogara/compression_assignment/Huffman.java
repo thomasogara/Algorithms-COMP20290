@@ -90,20 +90,17 @@ public class Huffman {
         for(int i : frequencies){
             sum += i;
         }
-        System.err.println(sum);
+        // System.err.println(sum);
         // write the trie to stdout for the decoder
-        //writeTrie(root);
+        writeTrie(root);
 
-        System.err.println(input.getBytes(StandardCharsets.US_ASCII).length);
-        System.err.println(Arrays.toString(input.getBytes(StandardCharsets.US_ASCII)));
+        /* used when debugging the byte reversal issue */
+        // System.err.println(input.getBytes(StandardCharsets.US_ASCII).length);
+        // System.err.println(Arrays.toString(input.getBytes(StandardCharsets.US_ASCII)));
         for(byte b : input.getBytes(StandardCharsets.US_ASCII)){
-            System.err.println(b);
-            BinaryStdOut.write((byte) (b));
-            /*
-            for(char c : lookupTable[i].toCharArray()){
+            for(char c : lookupTable[b].toCharArray()){
                 BinaryStdOut.write(c == '1');
             }
-             */
         }
 
     }
@@ -233,7 +230,7 @@ public class Huffman {
                 BinaryStdIn.close();
                 BinaryStdOut.close();
                 System.setOut(new PrintStream(new FileOutputStream(new File("timings.txt"))));
-                //System.out.println("Time taken to compress: "+ctime);
+                System.out.println("Time taken to compress: "+ctime);
                 break;
             case "decompress":
                 long dtime = System.nanoTime();
