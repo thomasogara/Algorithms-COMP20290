@@ -1,6 +1,6 @@
 # Thomas O'Gara's Algorithms Portfolio
 > Algorithms, eh?
-> This repository is intended as an ehibition of the algorithms developed during the COMP20290 module in UCD.
+> This repository is intended as an exhibition of the algorithms developed during the COMP20290 module in UCD.
 
 ## Getting Started
 To begin, please `git clone` the repository onto your local machine.
