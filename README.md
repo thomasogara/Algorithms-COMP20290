@@ -62,7 +62,7 @@ Once the program has begun execution, it will invite you to choose which practic
 ## Information for Correction Purposes
 Please note that from this point forward, the information presented is relevant only to the corrector for this assignment.
 ### Source Code
-The source code for each practical session can be found in the `/src/` directory. Each practical session has its source code stored in a java package labelled `Practical_<Week No.>`. All of these packages are stored in a single root package, `org.algorithms.thomasogara`. This naming convention for the root package, `org.project_name.project_owner` is standard for non-commercial java packages.
+The source code for each practical session can be found in the `/src/` directory. Each practical session has its source code stored in a java package labelled `Practical_<Week No.>`. All of these packages are stored in a single root package, `org.algorithms.thomasogara`.
 
 A copy of the source code for each practical session can be found in the folders Practical-1, Practical-2, etc. Each of these folders will contain a sub-folder with the title Practical_1, Practical_2, etc. These sub-folders are java packages, and contain the source code for their respective session.
 
